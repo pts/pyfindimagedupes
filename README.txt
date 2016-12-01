@@ -1,10 +1,11 @@
 pyfindimagedupes: Finds similar duplicate images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-pyfindimagedupes builds a 128-byte visual fingerprint of each specified image
-file, and finds and prints images whose fingerprints are close to each other
-(up to 25 1-bits in the binary xor of their fingerprints). pyfindimagedups is
-a compatible (and a bit slow) reference reimplementation of a subset of the
-findimagedupes Perl script. The base64 fingerprint outputs should be identical.
+pyfindimagedupes is a command-line Python script which builds a 128-byte
+visual fingerprint of each specified image file, and finds and prints images
+whose fingerprints are close to each other (up to 25 1-bits in the binary
+xor of their fingerprints). pyfindimagedups is a compatible (and a bit slow)
+reference reimplementation of a subset of the findimagedupes Perl script.
+The base64 fingerprint outputs should be identical.
 
 pyfindimagedupes needs Python 2.4, 2.5, 2.6 or 2.7 (no Python 3.x) and
 pgmagick installed.
