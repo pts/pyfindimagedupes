@@ -48,6 +48,12 @@ def fingerprint_image(filename):
   img.magick('mono')
   blob = pgmagick.Blob()
   img.write(blob)
+  # The output of the following command is identical to blob.data, but it's
+  # diferent from `convert' (ImageMagick) instead of `gm
+  # convert' (GraphicsMagick): even the output of (-sample '160x160!') is
+  # different.
+  #
+  #   gm convert "${filename}" -sample '160x160!' -modulate 100,-100,100 -blur 3x99 -normalize -equalize -sample '16x16' -threshold 50% mono:t.out
   return blob.data  # 32 bytes.
 
 
