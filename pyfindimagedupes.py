@@ -36,8 +36,18 @@ half_threshold = (1 << (pgmagick.Image().depth() - 1)) - 1  # 127.
 diff_bit_threshold = 25
 
 
+def fix_gm_filename(filename):
+  """Prevent GraphicsMagick from treating files like logo: specially."""
+  if not os.path.isabs(filename) and (
+     filename.startswith('-') or filename.startswith('+') or
+     ':' in filename):
+    return os.path.join('.', filename)
+  else:
+    return filename
+
+
 def fingerprint_image(filename):
-  img = pgmagick.Image(filename)
+  img = pgmagick.Image(fix_gm_filename(filename))
   img.sample('160x160!')
   img.modulate(100.0, -100.0, 100.0)  # saturation=-100.
   img.blur(3, 99)  # radius=3, sigma=99.
